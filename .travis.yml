@@ -1,0 +1,16 @@
+sudo: required
+
+services: 
+  - docker 
+before-install:
+  - docker build -t maars505/docker-react -f Dockerfile.dev .
+
+
+# tell travis how to run our test suite:
+# every time new code gets pushed to github, this test suite will run:
+script: 
+  - docker run maars505/docker-react npm run test -- --coverage
+
+
+
+  
